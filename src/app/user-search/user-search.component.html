@@ -1,0 +1,14 @@
+<div id="search-component">
+  <h4>User Search</h4>
+  <!--当用户在搜索框中输入时，一个 keyup 事件绑定会调用该组件的search()方法，并传入新的搜索框的值。  -->
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <div>
+    <!--*ngFor不能用可观察对象做任何事，除非我们在它后面跟一个async pipe (AsyncPipe)
+    这个async管道会订阅到这个可观察对象，并且为*ngFor生成一个英雄数组  -->
+    <div *ngFor="let user of users | async"
+         (click)="gotoDetail(user)" class="search-result">
+      {{user.name}}  
+    </div>
+  </div> 
+
+</div>

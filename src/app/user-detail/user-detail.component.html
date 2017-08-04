@@ -1,0 +1,25 @@
+<div *ngIf="user">
+  <h2>{{user.name}} details!</h2>
+  <div><label>id: </label>{{user.id}}</div>
+  <div>
+    <label>name: </label>
+    <!--虽然NgModel是一个有效的Angular指令，但它默认情况下却是不可用的。 
+      它属于一个可选模块FormsModule。 我们必须选择使用那个模块。
+      (在app.module.ts中导入并添加到imports属性中)  -->
+     <input [(ngModel)]="user.name" placeholder="name" /> 
+  </div>
+  <div>
+    <label>Shared Pictures:</label>
+    <ul>
+      <li *ngFor="let fid of user.files">
+        <img width="600" alt="image" [src]="images[fid]" *ngIf="images[fid]">
+         <!-- <p>{{images[fid]}}</p>  -->
+        <div *ngIf="!images[fid]" class="loader"></div>
+      <!-- <button (click)="getImage(fid)">Test</button> -->
+      </li>
+    </ul>
+  </div>
+  
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+</div>

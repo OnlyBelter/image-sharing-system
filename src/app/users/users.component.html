@@ -1,0 +1,31 @@
+<h2>All Users</h2>
+
+<!--for add new users  -->
+<div>
+  <label>User name:</label><input #userName />
+  <button (click)="add(userName.value); userName.value=''">
+    Add
+  </button>
+</div>
+
+<ul class="users">
+  <li *ngFor="let user of users"
+    [class.selected]="user === selectedUser"
+    (click)="onSelect(user)">
+    <span class="badge">{{user.id}}</span>
+    <span>{{user.name}}</span>
+    <!--添加删除按钮，$event语句是为了阻止点击事件向上冒泡  -->
+    <button class="delete" (click)="delete(user); $event.stopPropagation()">x</button>  
+  </li>
+</ul>
+
+<!--利用属性绑定传递数据，这里的属性user必须在app-user-detail组件中定义过
+    这里的属性指的是组件中导出的class UserDetailComponent中的属性，而不是模板的属性 -->
+ <!-- <app-user-detail [user]="selectedUser"></app-user-detail>  -->
+
+ <div *ngIf="selectedUser">
+    <h2>
+      This is {{ selectedUser.name | uppercase }}
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+ </div>
