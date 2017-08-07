@@ -11,10 +11,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Usage
 
-- git clone git@github.com:OnlyBelter/image-sharing-system.git
-- cd image-sharing-system
-- npm install
-- ng serve --host 0.0.0.0 --port 4201
+- `git clone git@github.com:OnlyBelter/image-sharing-system.git`
+- `cd image-sharing-system`
+- `npm install`
+- `ng serve --host 0.0.0.0 --port 4201`
 
 Then you can see this project in the browser at [http://localhost:4201/dashboard](http://localhost:4201/dashboard).
 
