@@ -4,9 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Dependencies
 
-- npm
-- Angular CLI
-- Angular 4.0
+- Node.js and npm, install from [here](https://nodejs.org/en/download/)
+- Angular CLI, install the Angular CLI globally: `npm install -g @angular/cli`
 
 
 ## Usage

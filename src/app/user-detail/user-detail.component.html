@@ -12,7 +12,7 @@
     <label>Shared Pictures:</label>
     <ul>
       <li *ngFor="let fid of user.files">
-        <img width="600" alt="image" [src]="images[fid]" *ngIf="images[fid]">
+        <img width="300" alt="image" [src]="images[fid]" *ngIf="images[fid]">
          <!-- <p>{{images[fid]}}</p>  -->
         <div *ngIf="!images[fid]" class="loader"></div>
       <!-- <button (click)="getImage(fid)">Test</button> -->

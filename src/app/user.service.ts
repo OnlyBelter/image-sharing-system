@@ -23,14 +23,16 @@ export class UserService {
   //UserService暴露了getUsers方法，返回跟以前一样的模拟数据，但它的消费者不需要知道这一点
   //服务是一个分离关注点，建议你把代码放到它自己的文件里
   getUsers(): Promise<User[]> {
-    // return USERS;
-    return Promise.resolve(USERS); // 返回承诺形式
+    // return USERS;  // 直接返回一个数组
+    return Promise.resolve(USERS); // 返回一个Promise对象
   }
 
+  // 延迟6s后返回
   getUsersSlowly(): Promise<User[]> {
     return new Promise(resolve => setTimeout(() => resolve(USERS), 6000));
   }
 
+  // 返回所有user的数据再过滤
   getUser(id: number): Promise<User> {
     return this.getUsers()
                .then(rep => rep.find(user => user.id === id));
@@ -41,10 +43,11 @@ export class UserService {
     return this.http.get(this.usersUrl)
                .toPromise()
                .then(res => res.json().data as User[])
+              //  .then(res => res)
                .catch(this.handleError);
   }
   
-  // 来发起一个 get-by-id 请求
+  // 来发起一个 get-by-id 请求，直接请求单个user的数据
   getUserByHttp(id: number): Promise<User> {
     const url = `${this.usersUrl}/${id}`;
     return this.http.get(url)
